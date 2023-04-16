@@ -1,0 +1,17 @@
+# Configuración para el despliegue en Cloud Run
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: prueba-app
+spec:
+  template:
+    metadata:
+      name: prueba-app
+    spec:
+      containers:
+        - image: gcr.io/${PROJECT_ID}/tu-nombre-de-imagen
+          env:
+            - name: PORT
+              value: "8080"
+          ports:
+            - containerPort: 8080
